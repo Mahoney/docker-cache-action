@@ -1601,9 +1601,9 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         const rootKey = core.getInput('root-key');
         core.info(`root-key: [${rootKey}]`);
-        const key = core.getInput('key');
+        const key = core.getInput('key').replace('ROOT_KEY_PLACEHOLDER', rootKey);
         core.info(`key: [${key}]`);
-        const restoreKeys = getInputAsArray('restore-keys');
+        const restoreKeys = getInputAsArray('restore-keys').map(value => value.replace('ROOT_KEY_PLACEHOLDER', rootKey));
         core.info(`restore-keys: ${restoreKeys}`);
     });
 }

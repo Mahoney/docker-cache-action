@@ -12,10 +12,12 @@ async function run(): Promise<void> {
   const rootKey = core.getInput('root-key')
   core.info(`root-key: [${rootKey}]`)
 
-  const key = core.getInput('key')
+  const key = core.getInput('key').replace('ROOT_KEY_PLACEHOLDER', rootKey)
   core.info(`key: [${key}]`)
 
-  const restoreKeys = getInputAsArray('restore-keys')
+  const restoreKeys = getInputAsArray('restore-keys').map(value =>
+    value.replace('ROOT_KEY_PLACEHOLDER', rootKey)
+  )
   core.info(`restore-keys: ${restoreKeys}`)
 }
 
