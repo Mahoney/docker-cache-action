@@ -2,10 +2,26 @@ name: 'Your name here'
 description: 'Provide a description here'
 author: 'Your name or organization here'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  root-key:
+    description: 'The start of a calculated key, change to cache bust'
+    default: docker
+    required: false
+  key:
+    description: 'An explicit key for restoring and saving the cache.'
+    default: ${{inputs.root-key}}-${{ github.ref }}-${{ github.sha }}
+    required: false
+  restore-keys:
+    description: 'An ordered list of keys to use for restoring the cache if no cache hit occurred for key.'
+    default: |
+      **-${{ github.sha }}
+      ${{inputs.root_key}}-${{ github.ref }}-
+      ${{inputs.root_key}}-'
+    required: false
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: 'node16'
+  main: 'dist/restore/index.js'
+  post: 'dist/save/index.js'
+  post-if: 'success()'
+branding:
+  icon: 'archive'
+  color: 'gray-dark'
