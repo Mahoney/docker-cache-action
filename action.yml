@@ -8,14 +8,14 @@ inputs:
     required: false
   key:
     description: 'An explicit key for restoring and saving the cache.'
-    default: ${{env.INPUT_ROOT-KEY}}-${{ github.ref }}-${{ github.sha }}
+    default: docker-${{ github.ref }}-${{ github.sha }}
     required: false
   restore-keys:
     description: 'An ordered list of keys to use for restoring the cache if no cache hit occurred for key.'
     default: |
       **-${{ github.sha }}
-      ${{env.INPUT_ROOT-KEY}}-${{ github.ref }}-
-      ${{env.INPUT_ROOT-KEY}}-'
+      docker-${{ github.ref }}-
+      docker-
     required: false
 runs:
   using: 'node16'
