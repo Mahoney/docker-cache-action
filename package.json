@@ -29,12 +29,12 @@
     "@typescript-eslint/eslint-plugin": "^5.26.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.34",
+    "@types/node": "^17.0.40",
     "@typescript-eslint/parser": "^5.25.0",
     "@vercel/ncc": "^0.33.3",
     "eslint": "^8.17.0",
     "eslint-plugin-github": "^4.3.6",
-    "eslint-plugin-jest": "^26.4.5",
+    "eslint-plugin-jest": "^26.5.3",
     "jest": "^27.2.5",
     "js-yaml": "^4.1.0",
     "prettier": "2.6.2",
